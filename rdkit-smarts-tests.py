@@ -21,7 +21,7 @@ prefix = args.prefix
 
 mkdirp("outputs")
 
-
+##### FROM SMILES
 
 # here provide the SMILES for the test molecule(s). If you don't have a better idea, leave as it is
 testing_molecule = 'CC(C)(F)c1ccc(cc1)C[C@H](N)CC[NH3+].[H]O[C@@]1([H])[C@@]([H])(O[C@]([H])(C([H])([H])OP(O)([O-])=O)[C@@]1([H])O[H])n1c([H])nc2c1n([H])c(nc2=O)N([H])[H]'
@@ -51,6 +51,36 @@ print("Activated for these atoms: ", triggeredatoms)
 # save m here again
 img = Chem.Draw.MolToFile(mol,
                           "outputs/%s--molecule-2.png" % (prefix),
+                          size=(400, 400),
+                          kekulize=False,
+                          highlightAtoms=triggeredatomsList)
+
+
+
+
+
+#### FROM PDB
+
+molPdb = Chem.rdmolfiles.MolFromPDBFile("GG.pdb")
+
+pdb_mother_img = Chem.Draw.MolToFile(molPdb,
+                                 "outputs/%s--molecule-pdb-1.png" % (prefix),
+                                 size=(400, 400),
+                                 kekulize=False)
+
+
+substructure = Chem.MolFromSmarts(smarts_pattern_to_test)
+
+triggeredatoms = molPdb.GetSubstructMatches(substructure)
+triggeredatomsList = [x[0] for x in triggeredatoms]
+print(triggeredatomsList)
+
+print("Activated for these atoms: ", triggeredatoms)
+
+
+# save m here again
+img = Chem.Draw.MolToFile(molPdb,
+                          "outputs/%s--molecule-pdb-2.png" % (prefix),
                           size=(400, 400),
                           kekulize=False,
                           highlightAtoms=triggeredatomsList)
