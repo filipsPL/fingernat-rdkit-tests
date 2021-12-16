@@ -25,7 +25,9 @@ mkdirp("outputs")
 
 # here provide the SMILES for the test molecule(s). If you don't have a better idea, leave as it is
 testing_molecule = 'CC(C)(F)c1ccc(cc1)C[C@H](N)CC[NH3+].[H]O[C@@]1([H])[C@@]([H])(O[C@]([H])(C([H])([H])OP(O)([O-])=O)[C@@]1([H])O[H])n1c([H])nc2c1n([H])c(nc2=O)N([H])[H]'
-smarts_pattern_to_test = '[!$([#1,#6,F,Cl,Br,I,o,s,nX3,#7v5,#15v5,#16v4,#16v6,*+1,*+2,*+3])]'
+
+# smarts_pattern_to_test = '[!$([#1,#6,F,Cl,Br,I,o,s,nX3,#7v5,#15v5,#16v4,#16v6,*+1,*+2,*+3])]'
+smarts_pattern_to_test = '[#1;$([#1]-[C])]'
 
 mother_mol = Chem.MolFromSmiles(testing_molecule)
 
