@@ -61,12 +61,12 @@ img = Chem.Draw.MolToFile(mol,
 
 #### FROM PDB
 
-molPdb = Chem.rdmolfiles.MolFromPDBFile("GG.pdb")
+molPdb = Chem.rdmolfiles.MolFromPDBFile("3d2v.pdb")
 
-pdb_mother_img = Chem.Draw.MolToFile(molPdb,
-                                 "outputs/%s--molecule-pdb-1.png" % (prefix),
-                                 size=(400, 400),
-                                 kekulize=False)
+# pdb_mother_img = Chem.Draw.MolToFile(molPdb,
+#                                  "outputs/%s--molecule-pdb-1.png" % (prefix),
+#                                  size=(400, 400),
+#                                  kekulize=False)
 
 
 substructure = Chem.MolFromSmarts(smarts_pattern_to_test)
@@ -75,12 +75,12 @@ triggeredatoms = molPdb.GetSubstructMatches(substructure)
 triggeredatomsList = [x[0] for x in triggeredatoms]
 print(triggeredatomsList)
 
-print("Activated for these atoms: ", triggeredatoms)
+# print("Activated for these atoms: ", triggeredatoms)
 
 
 # save m here again
-img = Chem.Draw.MolToFile(molPdb,
-                          "outputs/%s--molecule-pdb-2.png" % (prefix),
-                          size=(400, 400),
-                          kekulize=False,
-                          highlightAtoms=triggeredatomsList)
+# img = Chem.Draw.MolToFile(molPdb,
+#                           "outputs/%s--molecule-pdb-2.png" % (prefix),
+#                           size=(400, 400),
+#                           kekulize=False,
+#                           highlightAtoms=triggeredatomsList)
