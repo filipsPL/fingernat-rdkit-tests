@@ -25,7 +25,7 @@ jobs:
       - name: install and list packages
         shell: pwsh
         run: |
-          conda install -y rdkit
+          conda install -c conda-forge rdkit 
           conda list
       - name: run test
         shell: pwsh
